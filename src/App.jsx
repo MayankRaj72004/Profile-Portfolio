@@ -7,16 +7,13 @@ import Projects from './components/Projects'
 import Certifications from './components/Certifications'
 import CodingProfiles from './components/CodingProfiles'
 import Contact from './components/Contact'
+import SolarSystem from './components/SolarSystem'
 
 export default function App() {
   return (
     <>
-      {/* Floating background orbs */}
-      <div className="bg-orbs">
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-        <div className="orb orb-3" />
-      </div>
+      {/* Full-screen solar system in the absolute background */}
+      <SolarSystem />
 
       <div className="app-container">
         {/* LEFT: Sticky Sidebar */}

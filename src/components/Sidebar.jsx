@@ -65,21 +65,6 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Social links */}
-      <div className="sidebar-section">
-        <div className="social-row">
-          <a href="https://github.com/MayankRaj72004" target="_blank" rel="noreferrer" className="soc-btn">
-            <img src="https://simpleicons.org/icons/github.svg" alt="GitHub" />
-          </a>
-          <a href="https://www.linkedin.com/in/mayankraj1" target="_blank" rel="noreferrer" className="soc-btn">
-            <img src="https://simpleicons.org/icons/linkedin.svg" alt="LinkedIn" />
-          </a>
-          <a href="https://leetcode.com/u/MayankRaj8791/" target="_blank" rel="noreferrer" className="soc-btn">
-            <img src="https://simpleicons.org/icons/leetcode.svg" alt="LeetCode" />
-          </a>
-        </div>
-      </div>
-
       {/* CV Button */}
       <a
         href="https://drive.google.com/file/d/1WbtK4NysoZOWAAH2X6U2HUsZQfTMDQxS/view?usp=drive_link"

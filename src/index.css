@@ -28,47 +28,7 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* ===== FLOATING BACKGROUND ORBS ===== */
-.bg-orbs {
-  position: fixed; inset: 0;
-  overflow: hidden; pointer-events: none; z-index: 0;
-}
-.orb {
-  position: absolute; border-radius: 50%;
-  filter: blur(90px); opacity: 0.08;
-}
-.orb-1 {
-  width: 550px; height: 550px;
-  background: radial-gradient(circle, #FFBF00, transparent 70%);
-  top: -150px; left: -150px;
-  animation: orbFloat1 22s ease-in-out infinite;
-}
-.orb-2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, #FF8C00, transparent 70%);
-  bottom: 50px; right: -100px;
-  animation: orbFloat2 28s ease-in-out infinite;
-}
-.orb-3 {
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, #FFD700, transparent 70%);
-  top: 45%; left: 45%;
-  animation: orbFloat3 35s ease-in-out infinite;
-}
-@keyframes orbFloat1 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33%  { transform: translate(80px,60px) scale(1.15); }
-  66%  { transform: translate(-40px,120px) scale(0.9); }
-}
-@keyframes orbFloat2 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%  { transform: translate(-100px,-70px) scale(1.2); }
-}
-@keyframes orbFloat3 {
-  0%,100% { transform: translate(-50%,-50%) scale(1); }
-  33%  { transform: translate(-60%,-40%) scale(1.1); }
-  66%  { transform: translate(-38%,-58%) scale(0.85); }
-}
+/* ===== SOLAR SYSTEM BG (canvas, fixed, z-index:0) ===== */
 
 /* ===== LAYOUT ===== */
 .app-container {
@@ -78,18 +38,26 @@ body {
   grid-template-columns: 340px 1fr;
   gap: 28px;
   padding: 36px 36px 60px;
-  position: relative; z-index: 1;
+  position: relative;
+  z-index: 1;
+  /* Allow sidebar sticky to work inside grid */
+  align-items: start;
 }
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  background: rgba(36,36,36,0.85);
-  backdrop-filter: blur(24px);
-  border: 1px solid var(--border);
+  background: rgba(20,20,28,0.72);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.09);
   border-radius: 20px;
   padding: 34px 28px;
-  position: sticky; top: 36px;
+  /* Sticky: stays fixed in viewport while page scrolls */
+  position: sticky;
+  top: 36px;
   height: fit-content;
+  /* Needed for sticky to work inside CSS grid */
+  align-self: start;
 }
 
 /* Profile */
@@ -192,9 +160,10 @@ body {
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
-  background: rgba(36,36,36,0.85);
-  backdrop-filter: blur(24px);
-  border: 1px solid var(--border);
+  background: rgba(20,20,28,0.72);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.09);
   border-radius: 20px;
   padding: 0 40px 48px;
   height: fit-content;
@@ -203,9 +172,9 @@ body {
 /* ===== NAV ===== */
 .nav-wrap {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(36,36,36,0.96);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(20,20,28,0.92);
+  backdrop-filter: blur(28px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px 20px 0 0;
   margin: 0 -40px;
   padding: 18px 40px;
@@ -248,7 +217,12 @@ body {
   transition: border-color 0.3s, transform 0.3s;
 }
 .hi-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-.hi-icon { font-size: 1.6rem; margin-bottom: 9px; }
+.hi-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--accent-dim); color: var(--accent);
+  margin-bottom: 12px;
+}
 .hi-card h4 { color: var(--bright); font-size: 0.92rem; margin-bottom: 7px; }
 .hi-card p { font-size: 0.78rem; line-height: 1.5; }
 
@@ -256,8 +230,11 @@ body {
 .chip {
   background: var(--bg); border: 1px solid var(--border);
   border-radius: 30px; padding: 5px 14px;
-  display: flex; align-items: center; gap: 8px; font-size: 0.78rem;
+  display: flex; align-items: center; gap: 7px; font-size: 0.78rem;
+  transition: border-color 0.3s;
 }
+.chip:hover { border-color: var(--accent); }
+.chip-icon { display: flex; align-items: center; color: var(--accent); opacity: 0.85; }
 .chip-label { color: var(--muted); }
 .chip-val { color: var(--accent); font-weight: 600; }
 

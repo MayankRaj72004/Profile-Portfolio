@@ -2,10 +2,10 @@
 *, *::before, *::after { padding: 0; margin: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #1a1a1a;
-  --card: #242424;
-  --sidebar: #2a2a2a;
-  --border: #3a3a3a;
+  --bg: rgba(8,8,20,0.65);
+  --card: rgba(12,12,28,0.70);
+  --sidebar: rgba(15,15,32,0.72);
+  --border: rgba(255,255,255,0.10);
   --muted: #a0a0a0;
   --bright: #e0e0e0;
   --accent: #FFBF00;
@@ -16,7 +16,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background: #05050f;
   font-family: 'Inter', sans-serif;
   color: var(--muted);
   line-height: 1.6;
@@ -46,10 +46,11 @@ body {
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  background: rgba(20,20,28,0.72);
-  backdrop-filter: blur(28px) saturate(1.4);
-  -webkit-backdrop-filter: blur(28px) saturate(1.4);
-  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(8,8,22,0.55);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
   border-radius: 20px;
   padding: 34px 28px;
   /* Sticky: stays fixed in viewport while page scrolls */
@@ -160,10 +161,11 @@ body {
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
-  background: rgba(20,20,28,0.72);
-  backdrop-filter: blur(28px) saturate(1.4);
-  -webkit-backdrop-filter: blur(28px) saturate(1.4);
-  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(8,8,22,0.55);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
   border-radius: 20px;
   padding: 0 40px 48px;
   height: fit-content;
@@ -172,7 +174,7 @@ body {
 /* ===== NAV ===== */
 .nav-wrap {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(20,20,28,0.92);
+  background: rgba(5,5,18,0.85);
   backdrop-filter: blur(28px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px 20px 0 0;
@@ -307,6 +309,21 @@ body {
   padding: 3px 8px; border-radius: 5px;
   font-size: 0.72rem; margin-right: 5px; margin-bottom: 5px;
 }
+
+.proj-links {
+  display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;
+}
+.proj-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  text-decoration: none; font-size: 0.78rem; font-weight: 600;
+  padding: 6px 13px; border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.25s ease;
+}
+.proj-link--gh { color: var(--bright); }
+.proj-link--gh:hover { border-color: var(--bright); background: rgba(255,255,255,0.07); }
+.proj-link--live { color: var(--accent); }
+.proj-link--live:hover { border-color: var(--accent); background: var(--accent-dim); }
 
 /* ===== CERTIFICATIONS ===== */
 .cert-grid {
